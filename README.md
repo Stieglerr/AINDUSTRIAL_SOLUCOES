@@ -1,5 +1,3 @@
-README
-
 Aplicativo A Industrial Soluções
 
 Este projeto Flutter foi desenvolvido para profissionais da área elétrica, como eletricistas e técnicos.
