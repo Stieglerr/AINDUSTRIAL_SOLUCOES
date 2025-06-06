@@ -1,0 +1,44 @@
+name: aindustrialsolucoes
+description: "App da A Industrial"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.7.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_math_fork: ^0.7.3
+  cupertino_icons: ^1.0.8
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  path_provider: ^2.1.2
+  intl: ^0.18.1
+  sqflite_common_ffi: ^2.3.0
+  pdf: ^3.10.7
+  open_file: ^3.3.2
+  share_plus: ^7.2.2
+  vibration: ^2.0.0
+  shared_preferences: ^2.2.2
+  url_launcher: ^6.1.5
+  google_maps_flutter: ^2.5.0
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_app.png"
+
+flutter:
+  assets:
+    - assets/images/logo.png
+    - assets/images/logointbranco.png
+    - assets/images/logointpreto.png
+  uses-material-design: true
