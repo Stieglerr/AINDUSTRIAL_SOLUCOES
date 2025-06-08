@@ -70,3 +70,7 @@ Em caso de dúvidas, entre em contato pelo GitHub: https://github.com/Stieglerr
 Autor
 Desenvolvido por Lucas Stiegler
 https://github.com/Stieglerr
+
+DOWNLOAD APK
+
+https://drive.google.com/drive/folders/1Ui6NOKqbbID_dlFGGwYWb923DuYE5wb6?usp=sharing
