@@ -1,76 +1,93 @@
-Aplicativo A Industrial Soluções
+⚡ Aplicativo A Industrial Soluções
+Projeto Flutter desenvolvido para profissionais da área elétrica, como eletricistas e técnicos, oferecendo calculadoras e ferramentas essenciais com base nas normas NBR 5410 e NBR 17094.
+O objetivo é otimizar o dimensionamento e a análise de circuitos e componentes elétricos, mesmo offline.
 
-Este projeto Flutter foi desenvolvido para profissionais da área elétrica, como eletricistas e técnicos.
-O aplicativo oferece diversas calculadoras e ferramentas baseadas nas normas NBR 5410 e NBR
-17094, otimizando o dimensionamento e análise de circuitos e componentes elétricos.
+🔧 Funcionalidades
+🔌 Cálculo da bitola mínima de fios com base na corrente elétrica
+💡 Estimativa de consumo elétrico (R$)
+🔁 Conversão entre potência real (W) e potência aparente (VA) com fator de potência
+📏 Dimensionamento de eletrodutos conforme limites da NBR 5410
+⚙️ Cálculo de corrente elétrica para motores monofásicos e trifásicos
+🔒 Dimensionamento de contatoras e relés térmicos
+📊 Gerenciamento de orçamentos com armazenamento local (SQLite)
+📚 Acesso rápido a informações técnicas e referências normativas
+🗺️ Integração com Google Maps para visualização de localizações técnicas e suporte à geolocalização
 
-Funcionalidades
+🛠️ Tecnologias Utilizadas
+💙 Flutter (SDK multiplataforma)
+🎯 Dart (linguagem principal)
+🗃️ SQLite (sqflite e sqflite_common_ffi)
+⚙️ Shared Preferences (configurações locais)
+📳 Vibration (feedback tátil)
+🔣 flutter_math_fork (renderização LaTeX de fórmulas)
+🌐 url_launcher (acesso a links externos)
+🗺️ Google Maps API (serviços de mapa e geolocalização)
 
- Cálculo da bitola mínima de fios com base na corrente elétrica
- Estimativa de consumo elétrico em R$
- Conversão entre potência real (W) e potência aparente (VA) considerando o fator de potência
- Dimensionamento de eletrodutos segundo limites de ocupação normativos
- Cálculo de corrente elétrica para motores monofásicos e trifásicos
- Dimensionamento de contatoras e relés térmicos
- Gerenciamento de orçamentos com armazenamento local em SQLite
- Acesso rápido a informações técnicas com referências normativas
-
-Tecnologias Utilizadas
-
- Flutter (SDK de desenvolvimento multiplataforma)
- Dart (linguagem de programação)
- SQLite (armazenamento local com os pacotes sqflite e sqflite_common_ffi)
- Shared Preferences (armazenamento de configurações e dados simples)
- Vibration (feedback tátil)
- flutter_math_fork (renderização de fórmulas em LaTeX)
- url_launcher (abertura de links externos)
-
-Como Executar o Projeto
+▶️ Como Executar o Projeto
 
 1. Pré-requisitos
- Ter o Flutter instalado (versão 3.10 ou superior recomendada)
- Ter um emulador Android, iOS ou dispositivo físico configurado
-2. Clonar o repositório
+Flutter instalado (versão 3.10 ou superior recomendada)
+Emulador Android/iOS ou dispositivo físico configurado
+
+2. Clonar o Repositório
+
 git clone https://github.com/Stieglerr/A_Industrial_APP_Flutter
 cd A_Industrial_APP_Flutter
-3. Instalar dependências
+3. Instalar Dependências
+
 flutter pub get
-4. Rodar o aplicativo
- Em dispositivo físico ou emulador Android/iOS:
- flutter run
- Para rodar em desktop (Windows, Linux ou macOS):
- Adicione o seguinte no main.dart antes de rodar o app:
- import 'package:sqflite_common_ffi/sqflite_ffi.dart';
- void main() {
- sqfliteFfiInit();
- databaseFactory = databaseFactoryFfi;
- runApp(MyApp());
- }
 
-Detalhes Técnicos
+4. Executar o App
+Em emulador ou dispositivo físico:
 
-Fórmulas Utilizadas
- Corrente (A) = Potência (W) / Tensão (V)
- Potência Aparente (VA) = Potência Real (W) / Fator de Potência
- Corrente Motor Trifásico = (CV × 735.5) / (raiz(3) × V × FP × rendimento)
- Eletrodutos são dimensionados considerando número de cabos e limites da NBR 5410
+flutter run
+Para rodar no Desktop (Windows, Linux, macOS):
+Adicione no main.dart:
 
-Armazenamento Local com SQLite
 
-O módulo de orçamentos salva os dados diretamente no dispositivo usando SQLite. Isso permite:
- Funcionar offline
- Persistir dados entre sessões
- Consultar e editar orçamentos anteriores
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-Licença
+void main() {
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+  runApp(MyApp());
+}
+5. Configurar a API do Google Maps
+Este projeto utiliza o Google Maps, portanto é necessário adicionar sua chave de API:
 
-Este projeto é de uso livre para fins acadêmicos e educacionais.
-Em caso de dúvidas, entre em contato pelo GitHub: https://github.com/Stieglerr
+Android
+No arquivo android/app/src/main/AndroidManifest.xml, adicione dentro da tag <application>:
 
-Autor
-Desenvolvido por Lucas Stiegler
-https://github.com/Stieglerr
+<meta-data
+  android:name="com.google.android.geo.API_KEY"
+  android:value="SUA_CHAVE_DE_API_AQUI"/>
+  
+iOS
+No arquivo ios/Runner/AppDelegate.swift, adicione:
 
-DOWNLOAD APK
+GMSServices.provideAPIKey("SUA_CHAVE_DE_API_AQUI")
+Certifique-se de ativar o serviço do Google Maps na Google Cloud Console.
 
-https://drive.google.com/drive/folders/1Ui6NOKqbbID_dlFGGwYWb923DuYE5wb6?usp=sharing
+📐 Fórmulas Utilizadas
+Corrente (A) = Potência (W) / Tensão (V)
+Potência Aparente (VA) = Potência Real (W) / Fator de Potência
+Corrente Trifásica (A) = (CV × 735.5) / (√3 × V × FP × Rendimento)
+Dimensionamento de eletrodutos conforme cabos e limites da NBR 5410
+
+💾 Armazenamento Local com SQLite
+O módulo de orçamentos:
+Funciona offline
+Persiste dados entre sessões
+Permite consultar, editar e excluir orçamentos anteriores
+
+📄 Licença
+Este projeto é livre para fins acadêmicos e educacionais.
+Dúvidas? Entre em contato:
+🔗 GitHub - Stieglerr
+
+👨‍💻 Autor
+Desenvolvido por: Lucas Stiegler
+🔗 GitHub
+
+📱 Download do APK
+👉 Clique aqui para baixar o APK
