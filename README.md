@@ -83,11 +83,10 @@ Permite consultar, editar e excluir orçamentos anteriores
 📄 Licença
 Este projeto é livre para fins acadêmicos e educacionais.
 Dúvidas? Entre em contato:
-🔗 GitHub - Stieglerr
+GitHub - Stieglerr
 
 👨‍💻 Autor
 Desenvolvido por: Lucas Stiegler
-🔗 GitHub
 
 📱 Download do APK
-👉 Clique aqui para baixar o APK
+👉 Clique aqui para baixar o apk: https://drive.google.com/drive/folders/1Ui6NOKqbbID_dlFGGwYWb923DuYE5wb6?usp=sharing
