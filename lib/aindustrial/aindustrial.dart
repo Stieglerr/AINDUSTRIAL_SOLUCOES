@@ -34,15 +34,20 @@ class _AIndustrialState extends State<AIndustrial> {
       'https://api.whatsapp.com/send?phone=$phone&text=${Uri.encodeComponent(message)}',
     ];
 
+    bool launched = false;
+
     for (String url in urls) {
-      final uri = Uri.parse(url);
-      if (await canLaunchUrl(uri)) {
-        try {
-          await launchUrl(uri, mode: LaunchMode.externalApplication);
-          return;
-        } catch (_) {
-          // Tenta o próximo
+      try {
+        final uri = Uri.parse(url);
+        if (await canLaunchUrl(uri)) {
+          launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+          if (launched) {
+            return;
+          }
         }
+      } catch (e) {
+        debugPrint('Erro ao tentar abrir WhatsApp com URL $url: $e');
+        continue;
       }
     }
 
@@ -51,7 +56,7 @@ class _AIndustrialState extends State<AIndustrial> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text(
-          'WhatsApp não encontrado. Verifique se está instalado.',
+          'Não foi possível abrir o WhatsApp. Verifique se está instalado.',
         ),
         backgroundColor: Colors.orange,
         action: SnackBarAction(
@@ -213,7 +218,7 @@ class _AIndustrialState extends State<AIndustrial> {
                 child: const Text(
                   'A Industrial Materiais Elétricos é especializada em fornecer produtos elétricos de alta qualidade para residências, indústrias e profissionais da área. Nossa equipe está pronta para te atender e ajudar a encontrar os melhores produtos para suas necessidades.',
                   style: TextStyle(fontSize: 16, color: Colors.black87),
-                  textAlign: TextAlign.justify,
+                  textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(height: 30),

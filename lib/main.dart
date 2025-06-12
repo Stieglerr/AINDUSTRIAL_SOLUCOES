@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:vibration/vibration.dart';
 import 'residencial/residencial.dart';
@@ -18,13 +17,12 @@ void main() async {
     databaseFactory = databaseFactoryFfi;
   }
 
-  // Configuração para suprimir avisos de overflow
   FlutterError.onError = (FlutterErrorDetails details) {
     if (details.exception.toString().contains('overflowed by') ||
         details.exception.toString().contains('RenderFlex')) {
-      return; // Ignora especificamente erros de overflow
+      return;
     }
-    FlutterError.presentError(details); // Mantém outros erros visíveis
+    FlutterError.presentError(details);
   };
 
   runApp(const MyApp());
@@ -44,27 +42,9 @@ class MyApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(minimumSize: const Size(300, 100)),
         ),
       ),
-      // Builder global que previne overflow em todas as telas
+      // Removi o builder problemático e substitui por um mais simples
       builder: (context, child) {
-        return Scaffold(
-          body: MediaQuery.removePadding(
-            context: context,
-            removeBottom: true, // Remove padding inferior que causa overflow
-            child: KeyboardDismisser(
-              // Widget personalizado para teclado
-              child: SafeArea(
-                child: SingleChildScrollView(
-                  // Permite rolagem quando necessário
-                  physics: const ClampingScrollPhysics(),
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: child,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
+        return KeyboardDismisser(child: child!);
       },
       routes: {
         '/orcamentos': (context) => Orcamento(),
@@ -78,7 +58,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Widget auxiliar para fechar teclado ao tocar fora
 class KeyboardDismisser extends StatelessWidget {
   final Widget child;
 
@@ -99,7 +78,6 @@ class KeyboardDismisser extends StatelessWidget {
   }
 }
 
-// O restante do seu código (TelaPrincipal) permanece EXATAMENTE IGUAL
 class TelaPrincipal extends StatelessWidget {
   final Color corChumbo = const Color.fromARGB(255, 55, 52, 53);
 

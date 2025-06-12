@@ -11,7 +11,7 @@ class ConsumoReaisState extends State<ConsumoReais> {
   final Color corChumbo = const Color.fromARGB(255, 55, 52, 53);
   String _watts = '';
   String _horas = '';
-  String _precoKwh = '0.630';
+  String _precoKwh = '0.980';
 
   String _calcularConsumo() {
     final watts = double.tryParse(_watts);
@@ -96,7 +96,7 @@ class ConsumoReaisState extends State<ConsumoReais> {
             ),
             const SizedBox(height: 15),
             Text(
-              '* Valor padrão válido para o Paraná (Dez/2024)',
+              '* Valor padrão válido para o Paraná (Jun/2025)',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey[600],
